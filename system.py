@@ -2,7 +2,6 @@ import random
 import time
 class Arbiter():
     def randomizer(self):
-        global shuffled_code
         code = ""
         alphabets = ["A","a","B","b","C","c","D","d","E","e","F","f","G","g",
                     "H","h","I","i","J","j","K","k","L","l","M","m","N","n",
@@ -18,17 +17,20 @@ class Arbiter():
             random_number = numbers[random.randint(1,9)]
             code += random_number
 
-        shuffled_code = "".join(random.sample(code, len(code)))    
+        shuffled_code = "".join(random.sample(code, len(code)))
+
+        return shuffled_code    
 
 #create timer and blocker
     def blocker(self):
         time.sleep(15)
 
 #create score shower
-    def scorer(self):
+    def scorer(self, guess):
+        global score
         score = 0
         if guess == shuffled_code:
             score+= 1
         else:
             None
-        print(score)
+        
