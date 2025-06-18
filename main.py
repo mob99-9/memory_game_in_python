@@ -1,14 +1,17 @@
 from tkinter import *
-from system import *
-
-# this is the view of the app
-
+import system
+#show random letters
 main_menu = Tk()
 
 main_menu.title("Memory")
+main_menu.geometry("720x480")
 
-player = Player()
+title = Label(main_menu, text="Memory", font=(50))
+title.pack()
+#show timer and blocker 
 
-player.ask_player_name()
+#create entry box 
+
+#show score
 
 main_menu.mainloop()
