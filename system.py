@@ -33,4 +33,4 @@ class Arbiter():
             score+= 1
         else:
             None
-        print(score)
+        return score

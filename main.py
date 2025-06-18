@@ -10,10 +10,9 @@ title = Label(main_menu, text="Memory", font=(50))
 title.pack()
 
 class GameMaster(Arbiter):
-
     def show_code(self):
         code = Label(main_menu, text=f"{game.randomizer()}", fg="BLACK", font=(300))
-        code.place(x=330, y=90)
+        code.place(x=330, y=70)
 
     def user_entry(self):
         global ask_user
@@ -26,19 +25,27 @@ class GameMaster(Arbiter):
 
     def check_user(self):
         user_code = ask_user.get()
-        game.scorer(user_code)
-        
+        user_score = game.scorer(user_code)
+
+        score = Label(main_menu, text=user_score, font=(300))
+        score.place(y=70)
+        print(user_score)
+
+
 game = GameMaster()
 
-game.show_code()
-game.user_entry()
-game.user_submit()
+def start_game():
+    game.show_code()
+    game.user_entry()
+    game.user_submit()
+
 
 #show timer and blocker 
 
 
 #create entry box 
-
+if __name__ == "__main__":
+    start_game()
 #show score
 
 main_menu.mainloop()
