@@ -10,7 +10,7 @@ class Arbiter():
                     "V","v","W","w","X","x","Y","y","Z","z"]
         numbers = ["1", "2", "3", "4", "5","6","7","8","9","0"]
 
-        for counter in range(0,6):
+        for counter in range(0,4):
             random_letter = alphabets[random.randint(0,51)]
             code += random_letter
         
@@ -22,9 +22,6 @@ class Arbiter():
 
         return shuffled_code    
 
-#create timer and blocker
-    def blocker(self):
-        time.sleep(15)
 
 #create score shower
     def scorer(self, guess):
