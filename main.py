@@ -1,6 +1,7 @@
 from tkinter import *
 from system import *
-#show random letters
+import time
+
 main_menu = Tk()
 
 main_menu.title("Memory")
@@ -11,8 +12,13 @@ title.pack()
 
 class GameMaster(Arbiter):
     def show_code(self):
+        def blocker():
+            code.config(bg="BLACK")
+            
         code = Label(main_menu, text=f"{game.randomizer()}", fg="BLACK", font=(300))
         code.place(x=330, y=70)
+
+        code.after(5000, blocker)
 
     def user_entry(self):
         global ask_user
@@ -31,6 +37,10 @@ class GameMaster(Arbiter):
         score.place(y=70)
         print(user_score)
 
+    def start_button(self):
+        start_b = Button(main_menu, text="Start", command=start_game)
+        start_b.place(x=340, y=300)
+
 
 game = GameMaster()
 
@@ -40,12 +50,8 @@ def start_game():
     game.user_submit()
 
 
-#show timer and blocker 
-
-
-#create entry box 
 if __name__ == "__main__":
-    start_game()
-#show score
+    game.start_button()
+
 
 main_menu.mainloop()
