@@ -25,9 +25,8 @@ class Arbiter():
 
 #create score shower
     def scorer(self, guess):
-        score = 0
         if guess == shuffled_code:
-            score+= 1
+            color = "GREEN"
         else:
-            None
-        return score
+            color = "RED"
+        return color

@@ -1,6 +1,5 @@
 from tkinter import *
 from system import *
-import time
 
 main_menu = Tk()
 
@@ -12,9 +11,10 @@ title.pack()
 
 class GameMaster(Arbiter):
     def show_code(self):
+        global code
         def blocker():
             code.config(bg="BLACK")
-            
+
         code = Label(main_menu, text=f"{game.randomizer()}", fg="BLACK", font=(300))
         code.place(x=330, y=70)
 
@@ -33,13 +33,19 @@ class GameMaster(Arbiter):
         user_code = ask_user.get()
         user_score = game.scorer(user_code)
 
-        score = Label(main_menu, text=user_score, font=(300))
-        score.place(y=70)
+        score = Label(main_menu, padx= 720, pady=480, font=(300), bg=f"{user_score}")
+        score.pack()
+
+        code.destroy()
+        game.show_code()
+        game.user_entry()
+        game.user_submit()
         print(user_score)
 
     def start_button(self):
         start_b = Button(main_menu, text="Start", command=start_game)
         start_b.place(x=340, y=300)
+
 
 
 game = GameMaster()
