@@ -31,20 +31,24 @@ class GameMaster(Arbiter):
 
     def check_user(self):
         user_code = ask_user.get()
-        user_score = game.scorer(user_code)
+        user_answer = game.scorer(user_code)
 
-        score = Label(main_menu, padx= 720, pady=480, font=(300), bg=f"{user_score}")
+        score = Label(main_menu, padx= 720, pady=480, font=(300), bg=f"{user_answer}")
         score.pack()
 
-        code.destroy()
-        game.show_code()
-        game.user_entry()
-        game.user_submit()
-        print(user_score)
+        game.restart_button()
 
     def start_button(self):
         start_b = Button(main_menu, text="Start", command=start_game)
         start_b.place(x=340, y=300)
+
+    def exit_button(self):
+        exit_b = Button(main_menu, text="Exit", command=exit)
+        exit_b.place(x=340, y=330)
+
+    def restart_button(self):
+        restart_b = Button(main_menu, text="Restart", command=restart_game)
+        restart_b.place(x=340, y=300)
 
 
 
@@ -54,7 +58,15 @@ def start_game():
     game.show_code()
     game.user_entry()
     game.user_submit()
+    game.exit_button()
 
+def restart_game():
+    for widgets in main_menu.winfo_children():
+            widgets.destroy()
+    game.show_code()
+    game.user_entry()
+    game.user_submit()
+    game.exit_button()    
 
 if __name__ == "__main__":
     game.start_button()
