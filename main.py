@@ -9,14 +9,14 @@ main_menu.geometry("720x480")
 title = Label(main_menu, text="Memory", font=(50))
 title.pack()
 
-class GameMaster(Arbiter):
+class GameMaster(GameSystem):
     def show_code(self):
         global code
         def blocker():
             code.config(bg="BLACK")
 
-        code = Label(main_menu, text=f"{game.randomizer()}", fg="BLACK", font=(300))
-        code.place(x=330, y=70)
+        code = Label(main_menu, text=f"{game.randomizer()}", fg="BLACK", font=("Comic Sans", 20))
+        code.place(x=320, y=70)
 
         code.after(5000, blocker)
 
@@ -37,6 +37,7 @@ class GameMaster(Arbiter):
         score.pack()
 
         game.restart_button()
+        game.exit_button()
 
     def start_button(self):
         start_b = Button(main_menu, text="Start", command=start_game)

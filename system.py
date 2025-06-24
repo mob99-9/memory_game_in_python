@@ -1,6 +1,6 @@
 import random
 import time
-class Arbiter():
+class GameSystem():
     def randomizer(self):
         global shuffled_code
         code = ""
